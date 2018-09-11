@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CS3270A3 RJensen</string>
+
+    <string name="my_pick">My Pick</string>
+    <string name="btn_rock">Rock</string>
+    <string name="btn_paper">Paper</string>
+    <string name="btn_scissors">Scissors</string>
+</resources>
