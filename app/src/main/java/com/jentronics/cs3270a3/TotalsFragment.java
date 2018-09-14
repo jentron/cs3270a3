@@ -19,6 +19,11 @@ public class TotalsFragment extends Fragment {
     private TextView tvCount;
     private Button btn_reset;
 
+    private int gameCount = 0;
+    private int gameMyWins = 0;
+    private int gamePhoneWins = 0;
+    private int gameTies = 0;
+
     public TotalsFragment() {
         // Required empty public constructor
     }
@@ -43,12 +48,18 @@ public class TotalsFragment extends Fragment {
             public void onClick(View view) {
                 Toast toast = Toast.makeText(getActivity(), R.string.toast_message, Toast.LENGTH_SHORT);
                 toast.show();
+                gameCount = 0;
+                gameMyWins = 0;
+                gamePhoneWins = 0;
+                gameTies = 0;
+                tvCount.setText(Integer.toString(gameCount));
             }
         });
 
     }
 
     public void updateCount(int c){
-        tvCount.setText("The button as been pressed: " +c+" times.");
+        gameCount ++;
+        tvCount.setText(Integer.toString(gameCount));
     }
 }

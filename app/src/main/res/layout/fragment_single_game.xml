@@ -3,10 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SingleGameFrag">
-
-    <!-- TODO: Update blank fragment layout -->
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"
+        android:text="@string/title"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:text="@string/author"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <TextView
         android:id="@+id/myPick"
         android:layout_width="wrap_content"
@@ -33,4 +45,30 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/btn_scissors" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="@android:style/TextAppearance.Material.Headline"
+            android:text="@string/phone_pick_is"/>
+        <TextView
+            android:id="@+id/sg_phone_pick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="@android:style/TextAppearance.Material.Headline"
+            android:textColor="@color/dirty_pink"
+            android:text="?"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/sg_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"
+        android:textColor="@color/dirty_pink"
+        android:text="-"/>
 </LinearLayout>

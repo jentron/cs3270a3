@@ -5,7 +5,7 @@
     <string name="btn_paper">Paper</string>
     <string name="btn_scissors">Scissors</string>
     <string name="reset_counts">Reset Counts</string>
-    <string name="toast_message">"Clearing Variables"</string>
+    <string name="toast_message">"Counts are reset"</string>
 
     <string name="title">Rock, Paper, Scissors</string>
     <string name="author">By Ron Jensen</string>
