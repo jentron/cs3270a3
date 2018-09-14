@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -15,6 +17,7 @@ import android.widget.TextView;
 public class TotalsFragment extends Fragment {
     private View root;
     private TextView tvCount;
+    private Button btn_reset;
 
     public TotalsFragment() {
         // Required empty public constructor
@@ -34,6 +37,14 @@ public class TotalsFragment extends Fragment {
         super.onStart();
 
         tvCount = (TextView) root.findViewById(R.id.tvCount);
+        btn_reset = root.findViewById(R.id.btn_reset);
+        btn_reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast toast = Toast.makeText(getActivity(), R.string.toast_message, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
 
     }
 

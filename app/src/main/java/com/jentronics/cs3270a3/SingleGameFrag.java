@@ -1,6 +1,7 @@
 package com.jentronics.cs3270a3;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,7 +17,16 @@ public class SingleGameFrag extends Fragment {
 
     private View root;
     private Button btn_rock;
-    private int rock_count = 0;
+    private Button btn_paper;
+    private Button btn_scissors;
+
+    private onButtonListener mCallBack;
+
+    public interface onButtonListener {
+        void handleRockBtn();
+        void handlePaperBtn();
+        void handleScissorsBtn();
+    }
 
     public SingleGameFrag() {
         // Required empty public constructor
@@ -31,6 +41,17 @@ public class SingleGameFrag extends Fragment {
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mCallBack = (onButtonListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    +" must implement onButtonListern");
+        }
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
 
@@ -39,9 +60,27 @@ public class SingleGameFrag extends Fragment {
             @Override
             public void onClick(View view) {
                 // TODO Button has been pressed
-                rock_count++;
-                MainActivity activity = (MainActivity)getActivity();
-                activity.handleRockBtn(rock_count);
+                mCallBack.handleRockBtn();
+
+            }
+        });
+
+        btn_paper = (Button)root.findViewById(R.id.btn_paper);
+        btn_paper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO Button has been pressed
+                mCallBack.handlePaperBtn();
+            }
+        });
+
+        btn_scissors = (Button)root.findViewById(R.id.btn_scissors);
+        btn_scissors.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO Button has been pressed
+
+                mCallBack.handleScissorsBtn();
 
             }
         });
