@@ -32,12 +32,15 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/phone_win_count"/>
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:text="@string/phone_win_count"/><!--rgb(230, 72, 239)-->
         <TextView
             android:id="@+id/tvPhoneWinCount"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:textColor="@color/dirty_pink"
             android:text="0" />
     </LinearLayout>
     <LinearLayout
@@ -48,12 +51,15 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
             android:text="@string/my_win_count"/>
         <TextView
             android:id="@+id/tvMyWinCount"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:textColor="@color/dirty_pink"
             android:text="0" />
     </LinearLayout>
     <LinearLayout
@@ -64,12 +70,15 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
             android:text="@string/tie_games"/>
         <TextView
             android:id="@+id/tvTieGameCount"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:textColor="@color/dirty_pink"
             android:text="0" />
     </LinearLayout>
 
