@@ -18,30 +18,13 @@ public class MainActivity extends AppCompatActivity implements SingleGameFrag.on
         setContentView(R.layout.activity_main);
     }
 
-    public void handleRockBtn() {
+    public void handleBtnPress(int winner) {
         if(fragTv == null){
             fm = getSupportFragmentManager();
             fragTv = (TotalsFragment) fm.findFragmentById(R.id.fragTotals);
         }
         // update totals
-        fragTv.updateCount(++count);
-    }
-
-    public void handlePaperBtn() {
-        if(fragTv == null){
-            fm = getSupportFragmentManager();
-            fragTv = (TotalsFragment) fm.findFragmentById(R.id.fragTotals);
-        }
-        // update totals
-        fragTv.updateCount(++count);
-    }
-    public void handleScissorsBtn() {
-        if(fragTv == null){
-            fm = getSupportFragmentManager();
-            fragTv = (TotalsFragment) fm.findFragmentById(R.id.fragTotals);
-        }
-        // update totals
-        fragTv.updateCount(++count);
+        fragTv.updateCount(winner);
     }
 
 }

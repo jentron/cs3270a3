@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.Random;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,10 +24,18 @@ public class SingleGameFrag extends Fragment {
 
     private onButtonListener mCallBack;
 
+/***
+ * Game stuff
+ */
+    private enum Mode {NULL,ROCK, PAPER, SCISSORS};
+    private enum Result {TIE, PLAYERONE, PLAYERTWO}
+    private Random random= new Random();
+
+    /***
+     * UI Logic
+     */
     public interface onButtonListener {
-        void handleRockBtn();
-        void handlePaperBtn();
-        void handleScissorsBtn();
+        void handleBtnPress(int winner);
     }
 
     public SingleGameFrag() {
@@ -60,7 +70,7 @@ public class SingleGameFrag extends Fragment {
             @Override
             public void onClick(View view) {
                 // TODO Button has been pressed
-                mCallBack.handleRockBtn();
+                mCallBack.handleBtnPress(0);
 
             }
         });
@@ -70,7 +80,7 @@ public class SingleGameFrag extends Fragment {
             @Override
             public void onClick(View view) {
                 // TODO Button has been pressed
-                mCallBack.handlePaperBtn();
+                mCallBack.handleBtnPress(1);
             }
         });
 
@@ -80,10 +90,58 @@ public class SingleGameFrag extends Fragment {
             public void onClick(View view) {
                 // TODO Button has been pressed
 
-                mCallBack.handleScissorsBtn();
+                mCallBack.handleBtnPress(2);
+
 
             }
         });
 
     }
+
+    /**************
+     * Game logic below
+     **************/
+
+
+    private static int whoWon(int playerOne, int playerTwo) {
+        int result=Result.TIE.ordinal();
+
+        switch( playerOne){
+            case 1: // rock
+                if(playerTwo == Mode.ROCK.ordinal()) result = Result.TIE.ordinal();  // rock
+                else if (playerTwo == Mode.PAPER.ordinal()) result = Result.PLAYERTWO.ordinal(); // paper
+                else result = Result.PLAYERONE.ordinal(); // scissors
+                break;
+            //
+            case 2: // paper
+                if(playerTwo == Mode.ROCK.ordinal()) result = Result.PLAYERONE.ordinal(); // rock
+                else if (playerTwo == Mode.PAPER.ordinal()) result = Result.TIE.ordinal(); // paper
+                else result = Result.PLAYERTWO.ordinal(); //scissors
+                break;
+            //
+            case 3: // scissors
+                if(playerTwo == Mode.ROCK.ordinal()) result = Result.PLAYERTWO.ordinal(); // rock
+                else if (playerTwo == Mode.PAPER.ordinal()) result = Result.PLAYERONE.ordinal(); // paper
+                else result = Result.TIE.ordinal(); //scissors
+                break;
+        } // switch
+        return result;
+    } // whoWon
+
+    private Mode getPhonePlay(){
+
+        switch(random.nextInt(3) + 1)
+        {
+            case 1:
+                return Mode.ROCK;
+
+            case 2:
+                return Mode.PAPER;
+
+            case 3:
+                return Mode.SCISSORS;
+
+        }
+        return Mode.NULL;
+    } // getPlayMode(String)
 }

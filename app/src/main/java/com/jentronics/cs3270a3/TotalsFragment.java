@@ -17,6 +17,9 @@ import android.widget.Toast;
 public class TotalsFragment extends Fragment {
     private View root;
     private TextView tvCount;
+    private TextView tvPlayerWins;
+    private TextView tvPhoneWins;
+    private TextView tvTies;
     private Button btn_reset;
 
     private int gameCount = 0;
@@ -41,7 +44,10 @@ public class TotalsFragment extends Fragment {
     public void onStart(){
         super.onStart();
 
-        tvCount = (TextView) root.findViewById(R.id.tvCount);
+        tvCount      = (TextView) root.findViewById(R.id.tvCount);
+        tvPlayerWins = (TextView) root.findViewById(R.id.tvMyWinCount);
+        tvPhoneWins  = (TextView) root.findViewById(R.id.tvPhoneWinCount);
+        tvTies       = (TextView) root.findViewById(R.id.tvTieGameCount);
         btn_reset = root.findViewById(R.id.btn_reset);
         btn_reset.setOnClickListener(new View.OnClickListener() {
             @Override
