@@ -23,6 +23,7 @@ public class SingleGameFrag extends Fragment {
     private Button btn_paper;
     private Button btn_scissors;
     private TextView sgPhonePick;
+    private TextView sgResult;
 
     private onButtonListener mCallBack;
 
@@ -68,6 +69,8 @@ public class SingleGameFrag extends Fragment {
         super.onStart();
 
         sgPhonePick = (TextView) root.findViewById(R.id.sg_phone_pick);
+        sgResult    = (TextView) root.findViewById(R.id.sg_result);
+
         btn_rock = (Button)root.findViewById(R.id.btn_rock);
         btn_rock.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,9 +106,21 @@ public class SingleGameFrag extends Fragment {
     /**************
      * Game logic below
      **************/
+    private void sayWinner(int winner) {
+        switch(winner){
+            case 0: //tie
+                sgResult.setText(R.string.result_tie);
+                break;
+            case 1: // player wins
+               sgResult.setText(R.string.result_win);
+                break;
+            case 2:
+                sgResult.setText(R.string.result_lose);
+                break;
+        }
+    }
 
-
-    private static int whoWon(int playerOne, int playerTwo) {
+    private int whoWon(int playerOne, int playerTwo) {
         int result=Result.TIE.ordinal();
 
         switch( playerOne){
@@ -127,6 +142,7 @@ public class SingleGameFrag extends Fragment {
                 else result = Result.TIE.ordinal(); //scissors
                 break;
         } // switch
+        sayWinner(result);
         return result;
     } // whoWon
 

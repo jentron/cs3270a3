@@ -15,4 +15,7 @@
     <string name="phone_win_count">Phone Win Count</string>
     <string name="my_win_count">My Win Count</string>
     <string name="tie_games">Tie Games</string>
+    <string name="result_tie">It was a TIE!</string>
+    <string name="result_win">You WIN!</string>
+    <string name="result_lose">Phone WINS!</string>
 </resources>

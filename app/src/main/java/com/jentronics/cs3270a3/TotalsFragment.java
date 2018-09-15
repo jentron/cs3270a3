@@ -67,9 +67,9 @@ public class TotalsFragment extends Fragment {
 
     }
 
-    public void updateCount(int c){
+    public void updateCount(int winner){
         gameCount ++;
-        switch(c){
+        switch(winner){
             case 0: //tie
                 gameTies++;
                 break;
