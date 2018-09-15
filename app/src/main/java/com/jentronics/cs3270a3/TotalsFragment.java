@@ -59,6 +59,9 @@ public class TotalsFragment extends Fragment {
                 gamePhoneWins = 0;
                 gameTies = 0;
                 tvCount.setText(Integer.toString(gameCount));
+                tvPlayerWins.setText(Integer.toString(gameMyWins));
+                tvPhoneWins.setText(Integer.toString(gamePhoneWins));
+                tvTies.setText(Integer.toString(gameTies));
             }
         });
 
@@ -66,6 +69,20 @@ public class TotalsFragment extends Fragment {
 
     public void updateCount(int c){
         gameCount ++;
+        switch(c){
+            case 0: //tie
+                gameTies++;
+                break;
+            case 1: // player wins
+                gameMyWins++;
+                break;
+            case 2:
+                gamePhoneWins++;
+                break;
+        }
         tvCount.setText(Integer.toString(gameCount));
+        tvPlayerWins.setText(Integer.toString(gameMyWins));
+        tvPhoneWins.setText(Integer.toString(gamePhoneWins));
+        tvTies.setText(Integer.toString(gameTies));
     }
 }

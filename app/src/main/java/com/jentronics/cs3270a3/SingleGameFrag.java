@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -21,6 +22,7 @@ public class SingleGameFrag extends Fragment {
     private Button btn_rock;
     private Button btn_paper;
     private Button btn_scissors;
+    private TextView sgPhonePick;
 
     private onButtonListener mCallBack;
 
@@ -65,12 +67,13 @@ public class SingleGameFrag extends Fragment {
     public void onStart() {
         super.onStart();
 
+        sgPhonePick = (TextView) root.findViewById(R.id.sg_phone_pick);
         btn_rock = (Button)root.findViewById(R.id.btn_rock);
         btn_rock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO Button has been pressed
-                mCallBack.handleBtnPress(0);
+                int winner = whoWon(Mode.ROCK.ordinal(), getPhonePlay());
+                mCallBack.handleBtnPress(winner);
 
             }
         });
@@ -79,8 +82,8 @@ public class SingleGameFrag extends Fragment {
         btn_paper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO Button has been pressed
-                mCallBack.handleBtnPress(1);
+                int winner = whoWon(Mode.PAPER.ordinal(), getPhonePlay());
+                mCallBack.handleBtnPress(winner);
             }
         });
 
@@ -88,9 +91,8 @@ public class SingleGameFrag extends Fragment {
         btn_scissors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO Button has been pressed
-
-                mCallBack.handleBtnPress(2);
+                int winner = whoWon(Mode.SCISSORS.ordinal(), getPhonePlay());
+                mCallBack.handleBtnPress(winner);
 
 
             }
@@ -128,20 +130,23 @@ public class SingleGameFrag extends Fragment {
         return result;
     } // whoWon
 
-    private Mode getPhonePlay(){
+    private int getPhonePlay(){
 
         switch(random.nextInt(3) + 1)
         {
             case 1:
-                return Mode.ROCK;
+                sgPhonePick.setText(R.string.btn_rock);
+                return Mode.ROCK.ordinal();
 
             case 2:
-                return Mode.PAPER;
+                sgPhonePick.setText(R.string.btn_paper);
+                return Mode.PAPER.ordinal();
 
             case 3:
-                return Mode.SCISSORS;
+                sgPhonePick.setText(R.string.btn_scissors);
+                return Mode.SCISSORS.ordinal();
 
         }
-        return Mode.NULL;
+        return Mode.NULL.ordinal();
     } // getPlayMode(String)
 }
