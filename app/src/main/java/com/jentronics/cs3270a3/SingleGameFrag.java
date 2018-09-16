@@ -2,6 +2,7 @@ package com.jentronics.cs3270a3;
 
 
 import android.app.Activity;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -75,6 +76,9 @@ public class SingleGameFrag extends Fragment {
         btn_rock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_rock.getBackground().setColorFilter(getResources().getColor(R.color.dirty_pink), PorterDuff.Mode.SRC);
+                btn_paper.getBackground().clearColorFilter();
+                btn_scissors.getBackground().clearColorFilter();
                 int winner = whoWon(Mode.ROCK.ordinal(), getPhonePlay());
                 mCallBack.handleBtnPress(winner);
 
@@ -85,6 +89,9 @@ public class SingleGameFrag extends Fragment {
         btn_paper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_rock.getBackground().clearColorFilter();
+                btn_paper.getBackground().setColorFilter(getResources().getColor(R.color.dirty_pink), PorterDuff.Mode.SRC);
+                btn_scissors.getBackground().clearColorFilter();
                 int winner = whoWon(Mode.PAPER.ordinal(), getPhonePlay());
                 mCallBack.handleBtnPress(winner);
             }
@@ -94,6 +101,10 @@ public class SingleGameFrag extends Fragment {
         btn_scissors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+              //  btn_scissors.getBackground().applyTheme();
+                btn_rock.getBackground().clearColorFilter();
+                btn_paper.getBackground().clearColorFilter();
+                btn_scissors.getBackground().setColorFilter(getResources().getColor(R.color.dirty_pink), PorterDuff.Mode.SRC);
                 int winner = whoWon(Mode.SCISSORS.ordinal(), getPhonePlay());
                 mCallBack.handleBtnPress(winner);
 
